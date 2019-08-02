@@ -1,0 +1,154 @@
+# Overkill start
+jobs:
+- job: 'Test'
+  strategy:
+    matrix:
+      # Ubuntu 16.04
+      linux_py34:
+        imageName: 'ubuntu-16.04'
+        Python34:
+          python.version: '3.4'
+          python.arch: 'x64'
+      linux_py35:
+        imageName: 'ubuntu-16.04'
+        Python35:
+          python.version: '3.5'
+          python.arch: 'x64'
+      linux_py36:
+        imageName: 'ubuntu-16.04'
+        Python36:
+          python.version: '3.6'
+          python.arch: 'x64'
+      linux_py37:
+        imageName: 'ubuntu-16.04'
+        Python37:
+          python.version: '3.7'
+          python.arch: 'x64'
+      linux_pypy3:
+        imageName: 'ubuntu-16.04'
+        Python37:
+          python.version: 'pypy3'
+          python.arch: 'x64'
+      # macOS 10.13
+      macos_10.13_py34:
+        imageName: 'macOS-10.13'
+        Python34:
+          python.version: '3.4'
+          python.arch: 'x64'
+      macos_10.13_py35:
+        imageName: 'macOS-10.13'
+        Python35:
+          python.version: '3.5'
+          python.arch: 'x64'
+      macos_10.13_py36:
+        imageName: 'macOS-10.13'
+        Python36:
+          python.version: '3.6'
+          python.arch: 'x64'
+      macos_10.13_py37:
+        imageName: 'macOS-10.13'
+        Python37:
+          python.version: '3.7'
+          python.arch: 'x64'
+      macos_10.13_pypy3:
+        imageName: 'macOS-10.13'
+        Python37:
+          python.version: 'pypy3'
+          python.arch: 'x86'
+      # macOS 10.14
+      macos_10.14_py34:
+        imageName: 'macOS-10.14'
+        Python34:
+          python.version: '3.4'
+          python.arch: 'x64'
+      macos_10.14_py35:
+        imageName: 'macOS-10.14'
+        Python35:
+          python.version: '3.5'
+          python.arch: 'x64'
+      macos_10.14_py36:
+        imageName: 'macOS-10.14'
+        Python36:
+          python.version: '3.6'
+          python.arch: 'x64'
+      macos_10.14_py37:
+        imageName: 'macOS-10.14'
+        Python37:
+          python.version: '3.7'
+          python.arch: 'x64'
+      macos_10.14_pypy3:
+        imageName: 'macOS-10.14'
+        Python37:
+          python.version: 'pypy3'
+          python.arch: 'x86'
+      # Windows 2012
+      win2012_py36:
+        imageName: 'vs2015-win2012'
+        Python36:
+          python.version: '3.6'
+          python.arch: 'x64'
+      # Windows 2016
+      win2016_py34:
+        imageName: 'vs2017-win2016'
+        Python34:
+          python.version: '3.4'
+          python.arch: 'x64'
+      win2016_py35:
+        imageName: 'vs2017-win2016'
+        Python35:
+          python.version: '3.5'
+          python.arch: 'x64'
+      win2016_py36:
+        imageName: 'vs2017-win2016'
+        Python36:
+          python.version: '3.6'
+          python.arch: 'x64'
+      win2016_py37:
+        imageName: 'vs2017-win2016'
+        Python37:
+          python.version: '3.7'
+          python.arch: 'x64'
+      win2016_pypy3:
+        imageName: 'vs2017-win2016'
+        Python37:
+          python.version: 'pypy3'
+          python.arch: 'x86'
+      # Windows 2019
+      win2019_py34:
+        imageName: 'vs2017-win2019'
+        Python34:
+          python.version: '3.4'
+          python.arch: 'x64'
+      win2019_py35:
+        imageName: 'vs2017-win2019'
+        Python35:
+          python.version: '3.5'
+          python.arch: 'x64'
+      win2019_py36:
+        imageName: 'vs2017-win2019'
+        Python36:
+          python.version: '3.6'
+          python.arch: 'x64'
+      win2019_py37:
+        imageName: 'vs2017-win2019'
+        Python37:
+          python.version: '3.7'
+          python.arch: 'x64'
+      win2019_pypy3:
+        imageName: 'vs2017-win2019'
+        Python37:
+          python.version: 'pypy3'
+          python.arch: 'x86'
+    maxParallel: 5
+  
+  pool:
+    vmImage: $(imageName) # other options: 'macOS-10.13', 'vs2017-win2016'
+  
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+	    architecture: '$(python.arch)'
+
+  # Add additional tasks to run using each Python version in the matrix above
