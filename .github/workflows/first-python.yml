@@ -1,0 +1,21 @@
+name: First Test
+on: [push]
+
+jobs:
+  # Job ID
+  get-version:
+    # Job Name
+    name: First Job
+    runs-on: macOS-10.14
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Check Python Version
+        run: python --version
+      - name: Check Homebrew Version
+        run: brew --version
+      - name: Update Homebrew
+        run: |
+          brew update
+          brew upgrade
+
