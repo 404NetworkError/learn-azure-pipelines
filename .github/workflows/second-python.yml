@@ -1,21 +1,23 @@
-name: First Test
+name: Second Test
 on: [push, pull_request]
 
 jobs:
   # Job ID
   get-version:
     # Job Name
-    name: First Job
+    name: Second Job
     runs-on: macOS-10.14
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
-      - name: Check Python Version
-        run: python --version
       - name: Check Homebrew Version
         run: brew --version
-      - name: Update Homebrew
+        #- name: Update Homebrew
+        #  run: brew update
+      - name: Check current directory
+        run: echo ${PWD}
+      - name: Run git commands
         run: |
-          brew update
-          brew upgrade
+          git remote -v
+          git branch -v
 
