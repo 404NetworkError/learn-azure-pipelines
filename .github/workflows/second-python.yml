@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python: [2.7, 3.4, 3.5, 3.6, 3.7]
+        python: [2.7.16, 3.4.10, 3.5.7, 3.6.9, 3.7.4]
         os: [ubuntu-18.04]
         #        os: [ubuntu-18.04, macos-10.14]
         #        exclude:
