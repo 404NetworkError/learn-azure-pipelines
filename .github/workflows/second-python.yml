@@ -10,14 +10,14 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
-      - name: Check Homebrew Version
-        run: brew --version
-        #- name: Update Homebrew
-        #  run: brew update
-      - name: Check current directory
-        run: echo ${PWD}
-      - name: Run git commands
+      - name: Check Python Version
         run: |
-          git remote -v
-          git branch -v
+          echo "Python OSX"
+          ls -l /usr/bin/python
+          echo "Python Homebrew"
+          ls -l /usr/local/bin/python
+          /usr/local/bin/python --version
+          echo "Python3"
+          ls -l /usr/local/bin/python3
+          /usr/local/bin/python3 --version
 
