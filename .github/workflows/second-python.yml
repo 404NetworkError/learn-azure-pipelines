@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   # Job ID
-  get-version-${{ matrix.os}}:
+  get-version:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
