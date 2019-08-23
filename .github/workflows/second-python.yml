@@ -7,19 +7,18 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-18.04, macOS-10.14]
+        python: [2.7, 3.4, 3.5, 3.6, 3.7]
+        os: [ubuntu-18.04, macos-10.14]
+        exclude:
+        - os: macos-10.14
+          python: [2.7, 3.4, 3.5, 3.6, 3.7]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Check Python Version
         run: |
-          echo "Which Python"
-          which -a python
-          echo "Python Default"
-          ls -l $(which python)
-          python --version
-          echo "Attempt Python 2"
-          python2 --version
-          echo "Attempt Python 3"
-          python3 --version
+          echo "Which Python"; which -a python
+          echo "Python Default"; ls -l $(which python); python --version
+          echo "Attempt Python 2"; python2 --version
+          echo "Attempt Python 3"; python3 --version
 
