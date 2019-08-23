@@ -5,13 +5,15 @@ on: [push]
 jobs:
   build:
 
-    runs-on: macos-10.14
     strategy:
       max-parallel: 4
       matrix:
-#         python: [ '2.7', '3.4', '3.5', '3.6', '3.7', 'pypy2', 'pypy3' ]
-        python: [ 'pypy2', 'pypy3' ]
+        os: [macOS-10.14, windows-2016]
+        python: [ '2.7', '3.4', '3.5', '3.6', '3.7', 'pypy2', 'pypy3' ]
         arch: [ 'x86', 'x64' ]
+      exclude:
+      - os: macOS-10.14
+        arch: x86
 
     steps:
     - uses: actions/checkout@master
