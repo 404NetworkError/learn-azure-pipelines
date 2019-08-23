@@ -13,10 +13,10 @@ jobs:
         python: [ '2.7', '3.4', '3.5', '3.6', '3.7', 'pypy2', 'pypy3' ]
         arch: [ 'x86', 'x64' ]
         exclude:
-        - os: [macos-10.14, ubuntu-16.04]
+        - os: macos-10.14
           arch: x86
-#         - os: ubuntu-16.04
-#           arch: x86
+        - os: ubuntu-16.04
+          arch: x86
         - os: ubuntu-18.04
           arch: x86
           python: 3.4
