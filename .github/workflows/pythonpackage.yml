@@ -9,14 +9,17 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python: [ '2.x', '3.x', 'pypy2', 'pypy3' ]
+        python: [ '2.7', '3.4', '3.5', '3.6', '3.7', 'pypy2', 'pypy3' ]
+        arch: [ 'x86', 'x64' ]
 
     steps:
     - uses: actions/checkout@master
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@master
+    - name: Set up Python ${{ matrix.python }}
+      uses: actions/setup-python@v1
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: ${{ matrix.python }}
+        architecture: ${{ matrix.arch }}
+
     - name: Python Version
       run: |
         python --version
