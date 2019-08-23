@@ -3,15 +3,16 @@ on: [push, pull_request]
 
 jobs:
   # Job ID
-  get-version:
+  get-version-${{ matrix.os}}:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         python: [2.7, 3.4, 3.5, 3.6, 3.7]
-        os: [ubuntu-18.04, macos-10.14]
-        exclude:
-        - os: macos-10.14
-          python: [2.7, 3.4, 3.5, 3.6, 3.7]
+        os: ubuntu-18.04
+        #        os: [ubuntu-18.04, macos-10.14]
+        #        exclude:
+        #        - os: macos-10.14
+        #          python: [2.7, 3.4, 3.5, 3.6, 3.7]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
