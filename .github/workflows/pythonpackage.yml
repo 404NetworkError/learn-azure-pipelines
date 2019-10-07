@@ -33,3 +33,4 @@ jobs:
     - name: Python Version
       run: |
         python --version
+        python -c "Hello world"
